@@ -34,7 +34,7 @@ app.get("/blip", verifyJWT , (req,res)=>{
 
 app.post("/login", (req,res)=>{
     const {login,password} = req.body
-    if(login === "jose.louteiro" && password === "0505"){
+    if(login === process.env.LOGIN && password === process.env.PASSWORD){
         const token = jwt.sign({userId: 1}, SECRET, {expiresIn: 30})
         return res.json({auth:true, token})
     }
